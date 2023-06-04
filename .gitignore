@@ -31,7 +31,6 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 venv
-.idea
 __pycache__
 
 # Gradle and Maven with auto-import
