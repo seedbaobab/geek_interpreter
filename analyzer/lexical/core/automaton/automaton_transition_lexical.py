@@ -1,6 +1,6 @@
 import re
 
-from analyser.lexical_analyser.core.automaton.i_automaton_state_lexical import IAutomatonStateLexical
+from analyzer.lexical.core.automaton.i_automaton_state_lexical import IAutomatonStateLexical
 
 
 class AutomatonTransitionLexical:
