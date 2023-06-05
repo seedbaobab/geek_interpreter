@@ -30,7 +30,7 @@ class LexicalAnalyzer:
         while character_position.__lt__(character_maximum) and forward:
             token: Optional[TokenModel] = self.__extract_token(characters, character_position, character_maximum)
             if token is not None:
-                character_position += token.size + 1
+                character_position += token.size
                 if token.typology.__ne__("SPACE"):
                     tokens.append(token)
             else:
