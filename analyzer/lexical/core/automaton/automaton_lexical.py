@@ -30,4 +30,7 @@ class AutomatonLexical(ABC):
 
     @abstractmethod
     def _init(self):
+        """
+        Initialize the lexical unit.
+        """
         pass

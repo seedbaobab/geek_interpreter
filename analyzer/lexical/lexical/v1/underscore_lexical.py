@@ -5,23 +5,20 @@ from analyzer.lexical.core.automaton.automaton_state_lexical import AutomatonSta
 from analyzer.lexical.core.automaton.automaton_transition_lexical import AutomatonTransitionLexical
 
 
-class IdentifierLexical(AutomatonLexical, ABC):
+class UnderscoreLexical(AutomatonLexical, ABC):
     """
-    Identifier lexical unit class.
+    Underscore lexical unit class.
     """
 
     def __init__(self):
         """
-        Initialize a new instance of 'IdentifierLexical' class.
+        Initialize a new instance of 'UnderscoreLexical' class.
         """
-        super().__init__("IDENTIFIER")
+        super().__init__("UNDERSCORE")
 
     def _init(self):
         """
         Initialize the lexical unit.
         """
         self.source_state = AutomatonStateLexical(False)
-        final: AutomatonStateLexical = AutomatonStateLexical(True)
-
-        final.add_transition(AutomatonTransitionLexical(final, "[a-zAZ0-9]"))
-        self.source_state.add_transition(AutomatonTransitionLexical(final, "[a-zA-Z]"))
+        self.source_state.add_transition(AutomatonTransitionLexical(AutomatonStateLexical(True), "_"))
