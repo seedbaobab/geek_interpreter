@@ -1,4 +1,4 @@
-from analyzer.core.interpreter_exception import InterpreterException
+from analyzer.core.exception.interpreter_exception import InterpreterException
 
 
 class LexicalAnalyzerException(InterpreterException):

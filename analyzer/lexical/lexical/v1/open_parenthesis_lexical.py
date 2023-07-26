@@ -1,15 +1,25 @@
 from abc import ABC
 
+from analyzer.core.typology.typology_v1 import TypologyV1
 from analyzer.lexical.core.automaton.automaton_lexical import AutomatonLexical
 from analyzer.lexical.core.automaton.automaton_state_lexical import AutomatonStateLexical
 from analyzer.lexical.core.automaton.automaton_transition_lexical import AutomatonTransitionLexical
 
 
 class OpenParenthesisLexical(AutomatonLexical, ABC):
+    """
+    Open parenthesis lexical unit class.
+    """
 
     def __init__(self):
-        super().__init__("OPEN_PARENTHESIS")
+        """
+        Initialize a new instance of 'OpenParenthesisLexical' class.
+        """
+        super().__init__(TypologyV1.OPEN_PARENTHESIS)
 
     def _init(self):
+        """
+        Initialize the lexical unit.
+        """
         self.source_state = AutomatonStateLexical(False)
         self.source_state.add_transition(AutomatonTransitionLexical(AutomatonStateLexical(True), "\\("))

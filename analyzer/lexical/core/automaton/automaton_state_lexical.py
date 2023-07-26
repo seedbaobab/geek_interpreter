@@ -7,11 +7,25 @@ from analyzer.lexical.core.automaton.i_automaton_state_lexical import IAutomaton
 class AutomatonStateLexical(IAutomatonStateLexical):
 
     def __init__(self, is_final: bool):
+        """
+        Initialize a new instance of 'AutomatonStateLexical' class.
+        :param is_final: Indicate if the state is final or not.
+        """
         super().__init__(is_final)
         self.__transitions: list[AutomatonTransitionLexical] = []
 
     def extract_token(self, characters: list[str], position: int, max_position: int, token: Optional[str] = None) \
             -> tuple[bool, int, Optional[str]]:
+        """
+        Extract a token.
+        :param characters: The command convert in the character list.
+        :param position: The position of the analyzer.
+        :param max_position: The maximum position for the analyzer.
+        :param token: The token in progress.
+        :return: A tuple composed of one boolean to True if a token has been found otherwise False.
+        And the token found or None.
+        """
+
         if position.__ge__(max_position):
             return (True, position, token) if self._is_final else (False, position, None)
 

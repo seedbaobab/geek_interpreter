@@ -1,5 +1,6 @@
 from abc import ABC
 
+from analyzer.core.typology.typology_v1 import TypologyV1
 from analyzer.lexical.core.automaton.automaton_lexical import AutomatonLexical
 from analyzer.lexical.core.automaton.automaton_state_lexical import AutomatonStateLexical
 from analyzer.lexical.core.automaton.automaton_transition_lexical import AutomatonTransitionLexical
@@ -14,7 +15,7 @@ class UnderscoreLexical(AutomatonLexical, ABC):
         """
         Initialize a new instance of 'UnderscoreLexical' class.
         """
-        super().__init__("UNDERSCORE")
+        super().__init__(TypologyV1.UNDERSCORE)
 
     def _init(self):
         """
