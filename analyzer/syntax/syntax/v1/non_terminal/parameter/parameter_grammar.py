@@ -12,14 +12,25 @@ from analyzer.syntax.tree.v1.parameter_branch import ParameterBranch
 
 
 class ParameterGrammar(AlternativeGrammar, ABC):
+    """
+    Grammar for a service call grammar.
+    """
 
     def __init__(self):
+        """
+        Initialize a new instance of 'ParameterGrammar' class.
+        """
         super().__init__(TypologyV1.PARAMETER)
 
         self._sequence.append(TransitionGrammar(ExpressionGrammar(), [TypologyV1.STRING, TypologyV1.INTEGER]))
         self._sequence.append(TransitionGrammar(ParameterListGrammar(), [TypologyV1.STRING, TypologyV1.INTEGER]))
 
     def extract_leaf(self, target: Target) -> AbstractTree:
+        """
+        Extract the abstract tree linked to the grammar.
+        :param target: The token target.
+        :return: The abstract tree linked to the grammar.
+        """
         if target.token.typology.__eq__(TypologyV1.CLOSE_PARENTHESIS.value):
             return ParameterBranch()
 

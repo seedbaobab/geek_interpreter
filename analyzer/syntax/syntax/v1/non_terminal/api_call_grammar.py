@@ -7,7 +7,7 @@ from analyzer.syntax.core.exception.syntax_analyser_exception import SyntaxAnaly
 from analyzer.syntax.core.grammar.core.transition_grammar import TransitionGrammar
 from analyzer.syntax.core.grammar.non_terminal.sequential_grammar import SequentialGrammar
 from analyzer.syntax.core.tree.abstract_tree import AbstractTree
-from analyzer.syntax.syntax.v1.non_terminal.service_call.service_call_grammar import ServiceCall
+from analyzer.syntax.syntax.v1.non_terminal.provider_call_grammar import ProviderCallGrammar
 from analyzer.syntax.syntax.v1.terminal.identifier_grammar import IdentifierGrammar
 from analyzer.syntax.syntax.v1.terminal.point_grammar import PointGrammar
 from analyzer.syntax.tree.v1.identifier_leaf import IdentifierLeaf
@@ -16,14 +16,14 @@ from analyzer.syntax.tree.v1.provider_call_branch import ProviderCallBranch
 from analyzer.syntax.tree.v1.service_call_branch import ServiceCallBranch
 
 
-class ProviderCallGrammar(SequentialGrammar, ABC):
+class ApiCallGrammar(SequentialGrammar, ABC):
 
     def __init__(self):
         super().__init__(TypologyV1.PROVIDER_CALL)
 
         self._sequence.append(TransitionGrammar(IdentifierGrammar(), [TypologyV1.IDENTIFIER]))
         self._sequence.append(TransitionGrammar(PointGrammar(), [TypologyV1.POINT]))
-        self._sequence.append(TransitionGrammar(ServiceCall(), [TypologyV1.IDENTIFIER]))
+        self._sequence.append(TransitionGrammar(ProviderCallGrammar(), [TypologyV1.IDENTIFIER]))
 
     def _get_leaf(self, token: TokenModel) -> AbstractTree:
         return ProviderCallBranch()
